@@ -5,7 +5,7 @@ export default createGlobalStyle`
 :root {
 
 //variables
---tile-size: 2rem;
+--tile-size: 6vw;
 
 --tile-player: #5bb644;
 --tile-board: #d8d8d8;
@@ -22,6 +22,8 @@ export default createGlobalStyle`
 --tile-triple-word-color: #6600a1;
 
 --tile-border-radius: 0.2rem;
+
+--board-gap: 1px;
 }
   *,
   *::before,
