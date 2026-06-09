@@ -78,62 +78,12 @@ const categories = {
   ol: "3W",
 };
 
-// const categories = {
-//   "2B": [
-//     "ah",
-//     "ce",
-//     "ck",
-//     "dd",
-//     "dl",
-//     "ec",
-//     "em",
-//     "fh",
-//     "ha",
-//     "hf",
-//     "hj",
-//     "ho",
-//     "jh",
-//     "kc",
-//     "km",
-//     "ld",
-//     "ll",
-//     "me",
-//     "mk",
-//     "oh",
-//   ],
-//   "3B": [
-//     "aa",
-//     "ao",
-//     "bg",
-//     "bi",
-//     "ef",
-//     "ej",
-//     "fe",
-//     "fk",
-//     "gb",
-//     "gn",
-//     "ib",
-//     "in",
-//     "je",
-//     "jk",
-//     "kf",
-//     "kj",
-//     "ng",
-//     "ni",
-//     "oa",
-//     "oo",
-//   ],
-//   "2W": ["bb", "bn", "dh", "hd", "hl", "lh", "nb", "nn"],
-//   "3W": ["ad", "al", "da", "do", "la", "lo", "od", "ol"],
-// };
-
 export default function Board() {
   return (
     <StyledBoard>
       {tiles.map((tileRow) =>
         tiles.map((tileColumn) => {
           const key = tileRow.concat(tileColumn);
-          console.log(key);
           const category = key in categories ? categories[key] : "";
 
           return <Tile key={key} category={category} />;
