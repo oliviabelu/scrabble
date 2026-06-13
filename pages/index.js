@@ -36,6 +36,23 @@ export default function HomePage() {
     loadWords();
   }, []);
 
+  function handleUpdateTilebag(chosenTiles) {
+    let updatedTilebag = tilebag;
+
+    chosenTiles.forEach((chosenTile) => {
+      const index = updatedTilebag.findIndex(
+        (tile) => tile.letter === chosenTile.letter
+      );
+      if (index !== -1) {
+        updatedTilebag = updatedTilebag.toSpliced(index, 1);
+      }
+    });
+
+    setTilebag(updatedTilebag);
+  }
+
+  console.log(tilebag);
+
   if (isLoading) return <p>Loading...</p>;
 
   if (error) {
@@ -50,7 +67,7 @@ export default function HomePage() {
       <h1>Scrabboli</h1>
 
       <Board wordSet={wordSet} gameData={gameData} />
-      <Rack tilebag={tilebag} />
+      <Rack tilebag={tilebag} onUpdateTilebag={handleUpdateTilebag} />
     </>
   );
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const tileNumbers = [1, 2, 3, 4, 5, 6, 7];
 
-export default function Rack({ tilebag }) {
+export default function Rack({ tilebag, onUpdateTilebag }) {
   const [rackTiles, setRackTiles] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,9 @@ export default function Rack({ tilebag }) {
     updateTilebag(chosenTiles);
   }, []);
 
-  function updateTilebag(tiles) {}
+  function updateTilebag(tiles) {
+    onUpdateTilebag(tiles);
+  }
 
   return (
     <StyledTileList>
