@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const StyledBrick = styled.div`
+export const StyledBrick = styled.button`
   width: var(--cell-size);
   height: var(--cell-size);
   border-radius: var(--brick-border-radius) 0;

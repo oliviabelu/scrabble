@@ -1,8 +1,11 @@
 import { StyledBrick } from "./Brick.styled";
 
-export default function Brick({ category, tileLetter, tileValue }) {
+export default function Brick({ category, tileLetter, tileValue, onClick }) {
+  function handleClick() {
+    category === "tile" ? onClick(tileLetter) : onClick();
+  }
   return (
-    <StyledBrick $category={category}>
+    <StyledBrick type="button" onClick={handleClick} $category={category}>
       {category === "tile" ? (
         tileLetter === "?" ? (
           ""

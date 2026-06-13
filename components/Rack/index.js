@@ -1,14 +1,15 @@
+import { handleClientScriptLoad } from "next/script";
 import Brick from "../Brick";
 import { StyledTileList } from "./Rack.styled";
 import { useEffect, useState } from "react";
 
 const tileNumbers = [1, 2, 3, 4, 5, 6, 7];
 
-export default function Rack({ tilebag, onUpdateTilebag }) {
+export default function Rack({ tilebag, onUpdateTilebag, handleClick }) {
   const [rackTiles, setRackTiles] = useState([]);
 
   useEffect(() => {
-    const chosenTiles = tileNumbers.map((tilenumber) => {
+    const chosenTiles = tileNumbers.map(() => {
       const randomIndex = Math.floor(Math.random() * tilebag.length);
       return tilebag[randomIndex];
     });
@@ -28,6 +29,7 @@ export default function Rack({ tilebag, onUpdateTilebag }) {
             category={"tile"}
             tileLetter={rackTile.letter}
             tileValue={rackTile.value}
+            onClick={handleClick}
           />
         </li>
       ))}

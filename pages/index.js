@@ -13,6 +13,7 @@ function createTilebag() {
 export default function HomePage() {
   const [wordSet, setWordSet] = useState(null);
   const [tilebag, setTilebag] = useState(createTilebag);
+  const [chosenTile, setChosenTile] = useState(null);
 
   const { data: gameData, isLoading, error } = useSWR("/api/games");
 
@@ -51,7 +52,9 @@ export default function HomePage() {
     setTilebag(updatedTilebag);
   }
 
-  console.log(tilebag);
+  function handleClick(letter) {
+    setChosenTile(letter);
+  }
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -67,7 +70,11 @@ export default function HomePage() {
       <h1>Scrabboli</h1>
 
       <Board wordSet={wordSet} gameData={gameData} />
-      <Rack tilebag={tilebag} onUpdateTilebag={handleUpdateTilebag} />
+      <Rack
+        tilebag={tilebag}
+        onUpdateTilebag={handleUpdateTilebag}
+        handleClick={handleClick}
+      />
     </>
   );
 }
