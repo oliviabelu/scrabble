@@ -1,9 +1,16 @@
 import useSWR from "swr";
 import { useState, useEffect } from "react";
 import Board from "@/components/Board";
+import { TILES } from "@/constants/gameConstants";
+import Rack from "@/components/Rack";
 
 export default function HomePage() {
   const [wordSet, setWordSet] = useState(null);
+  const [tilebag, setTilebag] = useState(
+    Object.entries(TILES).flatMap(([letter, { count }]) =>
+      Array(count).fill(letter)
+    )
+  );
 
   const { data: gameData, isLoading, error } = useSWR("/api/games");
 
@@ -41,6 +48,7 @@ export default function HomePage() {
       <h1>Scrabboli</h1>
 
       <Board wordSet={wordSet} gameData={gameData} />
+      <Rack tilebag={tilebag} />
     </>
   );
 }
