@@ -10,7 +10,7 @@ export default function Rack({ rackTiles, handleClick }) {
             category={rackTile.letter === "" ? "emptyTile" : "tile"}
             tileLetter={rackTile.letter}
             tileValue={rackTile.value}
-            onClick={() => handleClick(rackTile.letter, index)}
+            onClick={() => handleClick(rackTile, index)}
           />
         </li>
       ))}

@@ -42,20 +42,20 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    const chosenTiles = tileNumbers.map((tileNumber) => {
+    const drawnTiles = tileNumbers.map((tileNumber) => {
       const randomIndex = Math.floor(Math.random() * tilebag.length);
       return tilebag[randomIndex];
     });
-    setRackTiles(chosenTiles);
-    updateTilebag(chosenTiles);
+    setRackTiles(drawnTiles);
+    updateTilebag(drawnTiles);
   }, []);
 
-  function updateTilebag(chosenTiles) {
+  function updateTilebag(drawnTiles) {
     let updatedTilebag = tilebag;
 
-    chosenTiles.forEach((chosenTile) => {
+    drawnTiles.forEach((drawnTile) => {
       const index = updatedTilebag.findIndex(
-        (tile) => tile.letter === chosenTile.letter
+        (tile) => tile.letter === drawnTile.letter
       );
       if (index !== -1) {
         updatedTilebag = updatedTilebag.toSpliced(index, 1);
@@ -65,22 +65,13 @@ export default function HomePage() {
     setTilebag(updatedTilebag);
   }
 
-  function handleTileClick(letter, index) {
-    setChosenTile({ letter: letter, index: index });
+  function handleTileClick(tile, index) {
+    setChosenTile({ ...tile, index });
   }
 
   function handleCellClick(row, column) {
     console.log("row: ", row, "column: ", column);
     if (chosenTile) {
-      console.log(
-        "chosen Tile: ",
-        chosenTile.letter,
-        "chosen Cell: ",
-        row,
-        column
-      );
-      console.log("chosenTile: ", chosenTile);
-      console.log("racktile: ", rackTiles);
       setCells({ ...cells, [`${row}-${column}`]: chosenTile });
       setRackTiles(
         rackTiles.map((rackTile, index) =>
@@ -88,7 +79,6 @@ export default function HomePage() {
         )
       );
       setChosenTile(null);
-      // setRackTiles()
     }
   }
 

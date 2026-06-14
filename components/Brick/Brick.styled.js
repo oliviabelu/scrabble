@@ -14,6 +14,12 @@ export const StyledLetter = styled.div`
 export const StyledValue = styled.div`
   grid-column: 2;
   grid-row: 1;
+
+  ${(props) =>
+    props.$category === "boardTile" &&
+    css`
+      font-size: 0.5rem;
+    `}
 `;
 
 export const StyledBrick = styled.button`
