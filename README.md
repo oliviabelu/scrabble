@@ -1,5 +1,9 @@
 # New Next Project
 
+### Project Description
+
+Scrabboli is a browser-based single-player word game inspired by Scrabble, built with Next.js, React, and MongoDB. It features a full 15×15 board, tile placement and validation mechanics, German word list checking, and Scrabble-accurate scoring. Players register with a username and can track their game history through a personal dashboard.
+
 ### Local Development
 
 To work locally, please install the dependencies using `npm i` first.
